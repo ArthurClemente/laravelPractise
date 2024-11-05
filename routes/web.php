@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 // array have controller class and the method name
 // by convention the route name is the route "/users" and the method name separated by a dot
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users', [UserController::class, 'createNewUser'])->name('users.createNewUser');
 
 Route::get('/', function () {
     return view('welcome');

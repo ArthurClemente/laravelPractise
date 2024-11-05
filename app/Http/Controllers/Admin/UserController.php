@@ -19,4 +19,13 @@ class UserController extends Controller
 
     return view('admin/users/index', compact('users')); // compact is a helper function that creates an array with the variable name and the variable value
   }
+
+  public function create() { // by convention, the function name must be the same as the view
+    return view('admin/users/create');
+  }
+
+  public function createNewUser(Request $request) {
+    User::create($request->all());
+    return redirect()->route('users.index');
+  }
 }
