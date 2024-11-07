@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,10 @@ class UserController extends Controller
     return view('admin/users/create');
   }
 
-  public function createNewUser(Request $request) {
+  public function createNewUser(CreateUserRequest $request) {
     User::create($request->all());
-    return redirect()->route('users.index');
+    return redirect()
+      ->route('users.index')
+      ->with('success', 'User created successfully');
   }
 }
