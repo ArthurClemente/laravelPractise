@@ -3,9 +3,13 @@
 @section('title', 'Users list')
 
 @section('content')
-<h1>Users</h1>
+  <h1>Users</h1>
 
   <a href={{ route('users.create') }}>New user</a>
+
+  @if(session()->has('success'))
+    {{ session('success') }}
+  @endif
 
   <table>
     <thead>
