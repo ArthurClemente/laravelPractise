@@ -10,6 +10,10 @@
   @if(session()->has('success'))
     {{ session('success') }}
   @endif
+  
+  @if(session()->has('message'))
+    {{ session('message') }}
+  @endif
 
   <table>
     <thead>
@@ -24,7 +28,9 @@
         <tr>
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
-          <td>-</td>
+          <td>
+            <a href={{ route('users.edit', $user->id) }}>Edit</a>
+          </td>
         </tr>
       @empty <!-- if the users collections is empty -->
         <tr>
